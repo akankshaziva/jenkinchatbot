@@ -7,6 +7,7 @@ pipeline {
 		stage("build") {
 		
 			steps {
+				git branch: 'main', url: 'https://github.com/akankshaziva/jenkinchatbot.git'
 				sh 'pwd'
 			 
 			}
