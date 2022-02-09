@@ -3,7 +3,7 @@
 		emailext to:  "${env:EMAIL_RECIPIENTS}",
 		mimeType: 'text/html',
 		subject: "Build ${BUILD_NUMBER}  " + buildStatus + " (${currentBuild.fullDisplayName})",
-		body: "<!DOCTYPE html><html><head> Build Details</head><body><p Build ${BUILD_NUMBER} - " + buildStatus + " (${currentBuild.fullDisplayName})" + "</p></body></html>		
+		body: "<!DOCTYPE html><html><head> Build Details</head><body><p> Build ${BUILD_NUMBER} - " + buildStatus + " (${currentBuild.fullDisplayName})"</p></body></html>		
 		attachLog: true
 }
 
