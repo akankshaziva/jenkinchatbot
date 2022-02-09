@@ -9,14 +9,14 @@ def main():
     bot_message = {
         'text' : "Job_name - %d\n %s" %({JOB_NAME},status)
 
-    message_headers = {'Content-Type': 'application/json; charset=UTF-8'}
+    #message_headers = {'Content-Type': 'application/json; charset=UTF-8'}
 
     http_obj = Http()
 
     response = http_obj.request(
         uri=url,
         method='POST',
-        headers=message_headers,
+        #headers=message_headers,
         body=dumps(bot_message),
     )
 
