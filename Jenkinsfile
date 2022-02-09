@@ -26,7 +26,7 @@ pipeline {
 			steps {
 				sh '''
 				pip3 install httplib2
-				python3 quickstart.py
+				python3 pythoncode.py
 				'''
 			 
 			}
