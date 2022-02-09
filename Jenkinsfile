@@ -1,12 +1,4 @@
- def notifyBuild(String buildStatus = 'Started'){
-	buildStatus =  buildStatus ?: 'Successful'
-		emailext to:  "${env:EMAIL_RECIPIENTS}",
-		mimeType: 'text/html',
-		subject: "Build ${BUILD_NUMBER}  " + buildStatus + " (${currentBuild.fullDisplayName})",
-		body: "<!DOCTYPE html><html><head> Build Details</head><body><p> Build ${BUILD_NUMBER} - " + buildStatus + " (${currentBuild.fullDisplayName})"</p></body></html>		
-		attachLog: true
-}
-
+ 
 pipeline {
     agent any
     stages {
@@ -26,8 +18,10 @@ pipeline {
 				sh 'pip3 install httplib2'
 				sh 'python3 pythoncode.py'
 	}
+			
+			
 
-
+		
 post { 
 		success {
             notifyBuild("Successful");
@@ -39,3 +33,15 @@ post {
             notifyBuild("Failed");
 				}
     }
+
+			
+def notifyBuild(String buildStatus = 'Started'){
+	buildStatus =  buildStatus ?: 'Successful'
+		emailext to:  "${env:EMAIL_RECIPIENTS}",
+		mimeType: 'text/html',
+		subject: "Build ${BUILD_NUMBER}  " + buildStatus + " (${currentBuild.fullDisplayName})",
+		body: "<!DOCTYPE html><html><head> Build Details</head><body><p> Build ${BUILD_NUMBER} - " + buildStatus + " (${currentBuild.fullDisplayName})"</p></body></html>		
+		attachLog: true
+ 
+}
+
